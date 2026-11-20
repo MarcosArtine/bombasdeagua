@@ -3,7 +3,7 @@
   --muted: #62717d;
   --blue: #0069a6;
   --blue-dark: #064b75;
-  --red: #d71920;
+  --red: #e30613;
   --paper: #f6f7f8;
   --white: #fff;
   --line: #e2e7eb;
@@ -18,7 +18,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -43,14 +43,16 @@ button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid rgba(23, 33, 43, 0.08);
+  color: var(--white);
+  background: #080808;
+  border-top: 3px solid var(--red);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(14px);
 }
 
 .nav-container {
   width: min(1200px, calc(100% - 48px));
-  min-height: 82px;
+  min-height: 112px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -68,8 +70,8 @@ button:focus-visible {
 
 .brand-mark {
   display: block;
-  width: 43px;
-  height: 43px;
+  width: 230px;
+  height: 74px;
   object-fit: contain;
 }
 
@@ -80,26 +82,41 @@ button:focus-visible {
 }
 
 .brand-copy strong {
-  font-size: 0.88rem;
+  color: var(--white);
+  font-size: 1rem;
   letter-spacing: 0.09em;
 }
 
 .brand-copy small {
   margin-top: 4px;
-  color: var(--blue);
+  color: var(--red);
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.11em;
 }
 
 .nav-links {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: none;
+  align-items: stretch;
+  gap: 0;
+  padding: 8px 24px 18px;
+  background: #080808;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28);
+}
+
+.nav-links.active {
   display: flex;
-  align-items: center;
-  gap: clamp(18px, 2.5vw, 34px);
+  flex-direction: column;
 }
 
 .nav-links > a {
-  color: #3a4650;
+  padding: 12px 4px;
+  color: #e6e6e6;
   font-size: 0.87rem;
   font-weight: 600;
   text-decoration: none;
@@ -107,18 +124,18 @@ button:focus-visible {
 }
 
 .nav-links > a:hover {
-  color: var(--blue);
+  color: var(--red);
 }
 
 .nav-links > a.btn-nav {
   padding: 11px 17px;
   color: var(--white);
-  background: var(--blue);
+  background: var(--red);
   border-radius: 4px;
 }
 
 .nav-links > a.btn-nav:hover {
-  background: var(--blue-dark);
+  background: #b8141b;
 }
 
 .btn-nav span,
@@ -128,7 +145,7 @@ button:focus-visible {
 }
 
 .mobile-menu-btn {
-  display: none;
+  display: flex;
   width: 44px;
   height: 44px;
   padding: 10px;
@@ -144,7 +161,7 @@ button:focus-visible {
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--ink);
+  background: var(--white);
   border-radius: 2px;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -225,7 +242,7 @@ button:focus-visible {
 }
 
 .hero-content h1 span {
-  color: #84c7eb;
+  color: var(--red);
 }
 
 .hero-subtitle {
@@ -412,6 +429,7 @@ button:focus-visible {
 .service-card-featured {
   background: #f2f8fb;
   border-color: #c9e1ef;
+  border-top: 3px solid var(--red);
 }
 
 .service-number {
@@ -668,6 +686,7 @@ button:focus-visible {
   padding: 73px 24px;
   color: var(--white);
   background: #07537f;
+  border-top: 4px solid var(--red);
 }
 
 .coverage-inner {
@@ -853,9 +872,9 @@ button:focus-visible {
     align-items: stretch;
     gap: 0;
     padding: 8px 18px 18px;
-    background: var(--white);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 12px 20px rgba(23, 33, 43, 0.08);
+    background: #080808;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28);
   }
 
   .nav-links.active {
@@ -900,7 +919,7 @@ button:focus-visible {
 
 @media (max-width: 640px) {
   html {
-    scroll-padding-top: 74px;
+    scroll-padding-top: 82px;
   }
 
   .nav-container {
@@ -908,16 +927,8 @@ button:focus-visible {
   }
 
   .brand-mark {
-    width: 38px;
-    height: 38px;
-  }
-
-  .brand-copy strong {
-    font-size: 0.79rem;
-  }
-
-  .brand-copy small {
-    font-size: 0.56rem;
+    width: 160px;
+    height: 52px;
   }
 
   .hero-section {
@@ -1076,6 +1087,7 @@ button:focus-visible {
 
   .coverage-detail ul {
     width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 15px;
   }
 
@@ -1104,8 +1116,21 @@ button:focus-visible {
 }
 
 @media (max-width: 380px) {
+  .nav-container {
+    gap: 10px;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
   .hero-content h1 {
     font-size: 2.45rem;
+  }
+
+  .brand-mark {
+    width: 140px;
+    height: 45px;
   }
 
   .hero-actions {
@@ -1123,5 +1148,24 @@ button:focus-visible {
 
   .model-image {
     height: 210px;
+  }
+}
+
+@media (max-width: 260px) {
+  .nav-container {
+    gap: 8px;
+  }
+
+  .brand {
+    gap: 0;
+  }
+
+  .brand-mark {
+    width: 120px;
+    height: 39px;
+  }
+
+  .mobile-menu-btn {
+    width: 40px;
   }
 }
