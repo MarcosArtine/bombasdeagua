@@ -32,4 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (currentYear) {
     currentYear.textContent = String(new Date().getFullYear());
   }
+
+  const heroSection = document.getElementById('inicio');
+  const floatingWa = document.querySelector('.floating-wa');
+  if (heroSection && floatingWa && 'IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      floatingWa.hidden = entry.isIntersecting;
+    });
+    heroObserver.observe(heroSection);
+  }
 });
